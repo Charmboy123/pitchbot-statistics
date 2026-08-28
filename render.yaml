@@ -11,18 +11,10 @@ services:
         sync: false
       - key: TELEGRAM_CHAT_ID
         sync: false
-      - key: FOOTBALL_API_KEY
+      - key: FOOTBALL_DATA_API
         sync: false
-      - key: FOOTBALL_API_URL
-        value: https://v3.football.api-sports.io
-      - key: FOOTBALL_API_PROVIDER
-        value: api_football
-      - key: ODDS_API_KEY
+      - key: ODDS_API
         sync: false
-      - key: ODDS_API_URL
-        value: https://api.the-odds-api.com/v4
-      - key: ODDS_API_PROVIDER
-        value: the_odds_api
       - key: DATABASE_URL
         fromDatabase:
           name: elite-football-db
