@@ -2,13 +2,13 @@
 
 A production-ready Telegram bot for deep football match analysis using multiple statistical models and real-time data.
 
-## Your Configuration
+## Your API Keys
 
 You have:
 - ✅ Telegram Bot Token
-- ✅ Odds API Key (The Odds API)
-- ✅ Football Data API Key (API-Football.com)
-- ✅ Chat ID for bot communication
+- ✅ Telegram Chat ID
+- ✅ Football Data API Key
+- ✅ Odds API Key
 
 ## Quick Deployment Guide
 
