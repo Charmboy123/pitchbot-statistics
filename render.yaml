@@ -1,0 +1,58 @@
+services:
+  - type: web
+    name: elite-football-ai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: FOOTBALL_API_KEY
+        sync: false
+      - key: FOOTBALL_API_URL
+        value: https://v3.football.api-sports.io
+      - key: FOOTBALL_API_PROVIDER
+        value: api_football
+      - key: ODDS_API_KEY
+        sync: false
+      - key: ODDS_API_URL
+        value: https://api.the-odds-api.com/v4
+      - key: ODDS_API_PROVIDER
+        value: the_odds_api
+      - key: DATABASE_URL
+        fromDatabase:
+          name: elite-football-db
+          property: connectionString
+      - key: ADMIN_USER_IDS
+        sync: false
+      - key: MIN_PROBABILITY
+        value: "0.75"
+      - key: MIN_EDGE
+        value: "0.05"
+      - key: MIN_DATA_QUALITY
+        value: "0.50"
+      - key: MIN_MODEL_CONSENSUS
+        value: "0.60"
+      - key: MONTE_CARLO_SIMULATIONS
+        value: "50000"
+      - key: CACHE_TTL
+        value: "3600"
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PORT
+        value: "8080"
+      - key: WEBHOOK_URL
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
+
+databases:
+  - name: elite-football-db
+    databaseName: elite_football
+    user: elite_football_user
