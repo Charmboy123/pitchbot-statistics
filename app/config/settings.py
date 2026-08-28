@@ -11,18 +11,16 @@ class Settings(BaseSettings):
     # Bot Configuration
     BOT_NAME: str = "ELITE FOOTBALL AI"
     BOT_SUBTITLE: str = "DEEP MATCH ANALYZER"
+    
+    # Your API Keys (Required)
     TELEGRAM_BOT_TOKEN: str = os.getenv("TELEGRAM_BOT_TOKEN", "")
-    TELEGRAM_CHAT_ID: str = os.getenv("TELEGRAM_CHAT_ID", "")  # Your chat ID for direct bot communication
+    TELEGRAM_CHAT_ID: str = os.getenv("TELEGRAM_CHAT_ID", "")
+    FOOTBALL_DATA_API: str = os.getenv("FOOTBALL_DATA_API", "")
+    ODDS_API: str = os.getenv("ODDS_API", "")
     
-    # Football API Configuration
-    FOOTBALL_API_KEY: str = os.getenv("FOOTBALL_API_KEY", "")
-    FOOTBALL_API_URL: str = os.getenv("FOOTBALL_API_URL", "https://v3.football.api-sports.io")
-    FOOTBALL_API_PROVIDER: str = os.getenv("FOOTBALL_API_PROVIDER", "api_football")
-    
-    # Odds API Configuration
-    ODDS_API_KEY: str = os.getenv("ODDS_API_KEY", "")
-    ODDS_API_URL: str = os.getenv("ODDS_API_URL", "https://api.the-odds-api.com/v4")
-    ODDS_API_PROVIDER: str = os.getenv("ODDS_API_PROVIDER", "the_odds_api")
+    # API URLs (Hardcoded defaults)
+    FOOTBALL_API_URL: str = "https://v3.football.api-sports.io"
+    ODDS_API_URL: str = "https://api.the-odds-api.com/v4"
     
     # Database Configuration
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./elite_football.db")
