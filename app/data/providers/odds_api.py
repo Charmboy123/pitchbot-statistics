@@ -9,9 +9,9 @@ logger = logging.getLogger(__name__)
 class OddsAPIProvider:
     """The Odds API provider implementation"""
     
-    def __init__(self, api_key: str = None, base_url: str = None):
-        self.api_key = api_key or settings.ODDS_API_KEY
-        self.base_url = base_url or settings.ODDS_API_URL
+    def __init__(self):
+        self.api_key = settings.ODDS_API  # Using your odds API key
+        self.base_url = settings.ODDS_API_URL
         self.headers = {
             "Content-Type": "application/json"
         }
@@ -33,6 +33,12 @@ class OddsAPIProvider:
                         logger.error(f"Rate limit exceeded for {endpoint}")
                         await asyncio.sleep(5)
                         return await self._make_request(endpoint, params)
+                    elif response.status == 401:
+                        logger.error(f"Unauthorized - Check ODDS_API key")
+                        return None
+                    elif response.status == 404:
+                        logger.error(f"Not found - {url}")
+                        return None
                     else:
                         logger.error(f"Odds API request failed: {response.status} - {url}")
                         return None
